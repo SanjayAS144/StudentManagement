@@ -1,0 +1,73 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <section>
+        <div class="col-xl-12 col-sm-6 col-12 mb-4">
+          <div class="row" style="height: 50px">
+            <div class="col-auto me-auto">
+              <h1>Select Proctor</h1>
+            </div>
+            <div class="col-auto">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="close()"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive" style="max-height: 350px">
+            <table
+              class="table datatable-table align-middle mb-0 bg-white table-borderless table-hover"
+              mdbTable
+              
+            >
+              <thead class="bg-light">
+                <tr>
+                  <th *ngFor="let header of headers">{{ header }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let teacher of teacherList" (click)="onRowSelect(teacher)" [ngStyle]="{'background-color': selectedRow === teacher ? '#ccc' : '' }">
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img
+                        [src]="
+                          teacher.image.length != 0
+                            ? teacher.image
+                            : defaultImage
+                        "
+                        alt=""
+                        style="width: 45px; height: 45px"
+                        class="rounded-circle"
+                      />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">
+                          {{ teacher.first_name + " " + teacher.last_name }}
+                        </p>
+                        <p class="text-muted mb-0">{{ teacher.email }}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">{{ teacher.age }}</p>
+                  </td>
+                  <td>
+                    <span class="badge badge-success d-inline">{{
+                      teacher.department
+                    }}</span>
+                  </td>
+                  <td>{{ teacher.phone_number }}</td>
+                  <td>
+                    <p class="fw-normal mb-1">{{ teacher.gender }}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

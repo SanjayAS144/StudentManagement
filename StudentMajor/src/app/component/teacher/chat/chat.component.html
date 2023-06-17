@@ -1,0 +1,188 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-auto bg-light">
+        <div
+          class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+          <a
+            routerLink="/dashboard"
+            class="d-block p-3 link-dark text-decoration-none"
+            title=""
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-original-title="Icon-only"
+          >
+            <img src="../assets/img/favicon-32x32.png" alt="" srcset="" />
+          </a>
+          <ul
+            class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center"
+          >
+            <li class="nav-item">
+              <a
+                routerLink="/dashboard"
+                class="nav-link py-3 px-3 bg-light"
+                style="color: grey"
+                title="Home"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Home"
+              >
+                <i class="bi-house fs-3"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/chat"  
+                class="nav-link py-3 px-3 text-bg-primary"
+                title="Chat"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Dashboard"
+              >
+                <i class="bi bi-person-plus fs-3"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/addEvent"
+                class="nav-link py-3 px-3 bg-light"
+                title="Announcement"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Orders"
+                data-bs-original-title="addMark"
+              >
+                <i class="bi bi-cloud-plus fs-3"></i>
+              </a>
+            </li>
+            <!-- <li>
+              <a
+                href="#"
+                class="nav-link py-3 px-3 bg-light"
+                title=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Products"
+              >
+                <i class="bi bi-book fs-3"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/dashboard"
+                class="nav-link py-3 px-3 bg-light"
+                title=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                data-bs-original-title="Customers"
+              >
+                <i class="bi-people fs-3"></i>
+              </a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle bg-light"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://i.imgur.com/hczKIze.jpg"
+                  width="40"
+                  class="rounded-circle"
+                />
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#" (click)="OnUserLogout()"
+                  >Log out</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm p-3 max-vh-100 row d-flex justify-content-center">
+        <!--dashboard content -->
+        <section class="col-md-6 " >
+          <div class="card">
+            <img src="assets/img/img_backtoschool.jpg" class="card-img-top" alt="Sunset Over the Sea"/>
+            <div class="card-body">
+              <p class="card-text">Chat Window, raise your questions</p>
+            </div>
+          </div>
+          <div style="height: 20px;"></div>
+          <div class="card">
+            <div class="card-body ">
+              <mdb-form-control>
+                <textarea mdbInput class="form-control" id="textAreaExample" rows="mx-auto" [(ngModel)]="message" (keyup)="OntextEnter()" [disabled]="isTextAreaDisabled"></textarea>
+                <label mdbLabel class="form-label" for="textAreaExample">Message</label>
+              </mdb-form-control>
+              <div style="height: 20px;"></div>
+              <div class="row" style="height: 50px">
+                <div class="col-auto me-auto">
+                  <button type="button" class="btn btn-floating " mdbRipple rippleColor="light" style="margin-right: 10px; color: #0277bd; outline-color: grey;" 
+                  (click)="toggled = !toggled"
+                  [(emojiPickerIf)]="toggled"
+                  [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+                  (emojiPickerSelect)="handleSelection($event)"
+                  >
+                    <i class="fas fa-face-smile fa-xl"></i>
+                  </button>
+                  <input #hiddenfileinput type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" style="display: none"/>
+                  <button type="button" class="btn btn-floating " (click)="hiddenfileinput.click()" mdbRipple rippleColor="light" style="margin-right: 10px; color: #0277bd; outline-color: grey;">
+                    <i class="fas fa-upload fa-xl"></i>
+                  </button>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn " style="margin-right: 20px;" (click)="onCancle()"> Cancel</button>
+                  <button type="button" class="btn btn-primary" [disabled]="disablepostButton" (click)="postMessage()"> Post</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        <section class="col-md-6">
+          <div class="scrollTarget" infinite-scroll style="overflow-y: auto; height: 100vh; padding: 10px;">
+            <div class="card" style="margin-top: 10px;" *ngFor="let message of messages | async">
+              <div class="card-header">
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                  alt=""
+                  style="width: 45px; height: 45px; margin-right: 10px;"
+                  class="rounded-circle float-start"/>
+                <div class="row" style="margin-left: 10px;">
+                  <div class="col-auto me-auto">
+                    <h3 style="
+                    font-weight: 600;
+                    font-size: 15px;
+                    text-transform: capitalize;
+                    margin-bottom: 0;
+                    ">{{message.senderName}}</h3>
+                  <span>{{message.timeStamp | dateDisplay}}</span>
+                  </div>
+                  <div class="col-auto" >
+                   <span [ngStyle]="message.senderUid == message.groupId?{'color': 'Green'} : {'color': '#4798CC'}">{{message.senderUid == message.groupId ?"Teacher":"Student"}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body" *ngIf="message.type=='text'">{{message.message}}</div>
+              <a
+              *ngIf="message.type=='file'"
+              class="btn btn-link m-0 text-reset"
+              [href]="message.link"
+              target="_blank"
+              role="button"
+              data-ripple-color="primary"
+              style="font-size: 16px; color: primary; color: #FF0000; font-weight: bold;text-decoration: underline; text-align: start;"
+              >{{message.message}}</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+  
+  

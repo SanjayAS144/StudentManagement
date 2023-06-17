@@ -1,0 +1,22 @@
+<app-student-dash-board *ngIf="userRole == 'Student'"></app-student-dash-board>
+<app-admin-dashboard *ngIf="userRole == 'admin'"></app-admin-dashboard>
+<app-teacher-dashboard *ngIf="userRole == 'Teacher'"></app-teacher-dashboard>
+<!-- <div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">LogOut</h4>
+                        </div>
+                        <button type="submit" class="btn btn-info" (click)="signOut()">Logout</button>
+                        <button type="submit" class="btn btn-info" (click)="update()" style="margin-left: 10px;">Update</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div> -->

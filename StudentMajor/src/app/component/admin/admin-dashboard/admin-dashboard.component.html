@@ -1,0 +1,287 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div
+        class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top"
+      >
+        <a
+          routerLink="/dashboard"
+          class="d-block p-3 link-dark text-decoration-none"
+          title=""
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          data-bs-original-title="Icon-only"
+        >
+          <img src="../assets/img/favicon-32x32.png" alt="" srcset="" />
+        </a>
+        <ul
+          class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center"
+        >
+          <li class="nav-item">
+            <a
+              routerLink="/dashboard"
+              class="nav-link py-3 px-3 text-bg-primary"
+              style="color: grey"
+              title="Home"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Home"
+            >
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/addStudent"
+              class="nav-link py-3 px-3 bg-light"
+              title="Add Student"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Dashboard"
+            >
+              <i class="bi bi-person-plus fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/addTeacher"
+              class="nav-link py-3 px-3 bg-light"
+              title="Add Teacher"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Orders"
+              data-bs-original-title="addMark"
+            >
+              <i class="bi bi-cloud-plus fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/addAnnouncement"
+              class="nav-link py-3 px-3 bg-light"
+              title="Add Announcement"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Products"
+            >
+              <i class="bi bi-book fs-3"></i>
+            </a>
+          </li>
+          <!-- <li>
+            <a
+              routerLink="/studentList"
+              class="nav-link py-3 px-3 bg-light"
+              title=""
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              data-bs-original-title="Customers"
+            >
+              <i class="bi-people fs-3"></i>
+            </a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle bg-light"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                src="https://i.imgur.com/hczKIze.jpg"
+                width="40"
+                class="rounded-circle"
+              />
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="OnUserLogout()"
+                >Log out</a
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100">
+      <!--dashboard content -->
+      <section>
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div style="margin-top: 5px;">
+                    <h2 style="margin: 0px;">Students</h2>
+                    <h1 style="font-weight: bold;">{{numberOfStudents}}</h1>
+                  </div>
+                  <div class="align-self-center">
+                    <img alt="example" class="img-fluid rounded" src="assets/svg/student.svg" style="background-color:#edf4ff; height: 75px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div style="margin-top: 5px;">
+                    <h2 style="margin: 0px;">Teachers</h2>
+                    <h1 style="font-weight: bold;">{{numberOfTeachers}}</h1>
+                  </div>
+                  <div class="align-self-center">
+                    <img alt="example" class="img-fluid rounded" src="assets/img/teacher.png" style="background-color:#edf4ff; height: 75px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div style="margin-top: 5px;">
+                    <h2 style="margin: 0px;">Departments</h2>
+                    <h1 style="font-weight: bold;">10+</h1>
+                  </div>
+                  <div class="align-self-center">
+                    <img alt="example" class="img-fluid rounded" src="assets/svg/deparments.svg" style="background-color:#edf4ff;width: 75px; height: 75px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card ripple " (click)="addNewAnnouncement()" data-mdb-ripple-color="primary" data-mdb-ripple-duration="500ms" data-mdb-ripple-radius="0" data-mdb-ripple-centered="true" data-mdb-ripple-unbound="false">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div style="margin-top: 5px;">
+                    <h2 style="margin: 0px;">New Announcement </h2>
+                    <h1 style="font-weight: bold;">{{numberOfEvents}}</h1>
+                  </div>
+                  <div class="align-self-center">
+                    <img alt="example" class="img-fluid rounded" src="assets/img/announcement.png" style="background-color:#edf4ff; height: 75px;width: 75px; object-fit: scale-down; object-position: center;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="col-xl-12 col-sm-6 col-12 mb-4">
+          <div class="card">
+            <div class="card-body ">
+              <div class="row" style="height: 50px;">
+                <div class="col-auto me-auto">
+                  <h1>Students</h1>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-primary">Show All</button>
+                </div>
+                
+              </div>
+              <div class="table-responsive" style="max-height: 350px;">
+                <table class="table datatable-table align-middle mb-0 bg-white table-borderless" mdbTable style="height: 200px;">
+                  <thead class="bg-light">
+                    <tr>
+                      <th *ngFor="let header of headers">{{header}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let student of studentList">
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img
+                              [src]="student.image.length != 0 ? student.image:defaultImage"
+                              alt=""
+                              style="width: 45px; height: 45px"
+                              class="rounded-circle"
+                              />
+                          <div class="ms-3">
+                            <p class="fw-bold mb-1">{{student.first_name + " " + student.last_name}}</p>
+                            <p class="text-muted mb-0">{{student.email}}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="fw-normal mb-1">{{student.age}}</p>
+                      </td>
+                      <td>
+                        <span class="badge badge-success d-inline">{{student.department}}</span>
+                      </td>
+                      <td>{{student.phone_number}}</td>
+                      <td>
+                        <p class="fw-normal mb-1">{{student.gender}}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <div class="col-xl-12 col-sm-6 col-12 mb-4">
+          <div class="card">
+            <div class="card-body ">
+              <div class="row" style="height: 50px;">
+                <div class="col-auto me-auto">
+                  <h1>Professors</h1>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-primary">Show All</button>
+                </div>
+                
+              </div>
+              <div class="table-responsive" style="max-height: 350px;">
+                <table class="table datatable-table align-middle mb-0 bg-white table-borderless" mdbTable style="height: 200px;">
+                  <thead class="bg-light">
+                    <tr>
+                      <th *ngFor="let header of headers">{{header}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let teacher of teacherList">
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <img
+                              [src]="teacher.image.length != 0 ? teacher.image:defaultImage"
+                              alt=""
+                              style="width: 45px; height: 45px"
+                              class="rounded-circle"
+                              />
+                          <div class="ms-3">
+                            <p class="fw-bold mb-1">{{teacher.first_name + " " + teacher.last_name}}</p>
+                            <p class="text-muted mb-0">{{teacher.email}}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="fw-normal mb-1">{{teacher.age}}</p>
+                      </td>
+                      <td>
+                        <span class="badge badge-success d-inline">{{teacher.department}}</span>
+                      </td>
+                      <td>{{teacher.phone_number}}</td>
+                      <td>
+                        <p class="fw-normal mb-1">{{teacher.gender}}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
