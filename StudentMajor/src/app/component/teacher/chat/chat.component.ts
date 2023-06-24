@@ -24,6 +24,7 @@ import {
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, AfterViewInit{
+  defaultImage = "https://mdbootstrap.com/img/new/avatars/8.jpg"
   private scrollTarget: HTMLElement | undefined;
   selectedFile?:File;
   toggled: boolean = false;

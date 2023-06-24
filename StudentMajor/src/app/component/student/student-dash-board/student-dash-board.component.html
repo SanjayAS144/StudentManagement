@@ -41,43 +41,6 @@
               <i class="bi bi-person-plus fs-3"></i>
             </a>
           </li>
-          <!-- <li>
-            <a
-              routerLink="/dashboard"
-              class="nav-link py-3 px-3 bg-light"
-              title=""
-              data-bs-toggle="tooltip"
-              data-bs-placement="right"
-              data-bs-original-title="Orders"
-              data-bs-original-title="addMark"
-            >
-              <i class="bi bi-cloud-plus fs-3"></i>
-            </a>
-          </li> -->
-          <!-- <li>
-            <a
-              href="#"
-              class="nav-link py-3 px-3 bg-light"
-              title=""
-              data-bs-toggle="tooltip"
-              data-bs-placement="right"
-              data-bs-original-title="Products"
-            >
-              <i class="bi bi-book fs-3"></i>
-            </a>
-          </li> -->
-          <!-- <li>
-            <a
-              routerLink="/dashboard"
-              class="nav-link py-3 px-3 bg-light"
-              title=""
-              data-bs-toggle="tooltip"
-              data-bs-placement="right"
-              data-bs-original-title="Customers"
-            >
-              <i class="bi-people fs-3"></i>
-            </a>
-          </li> -->
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle bg-light"
@@ -94,6 +57,9 @@
               />
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/profile" 
+                >Profile</a
+              >
               <a class="dropdown-item" href="#" (click)="OnUserLogout()"
                 >Log out</a
               >
@@ -104,104 +70,9 @@
     </div>
     <div class="col-sm p-3 min-vh-100">
       <!--dashboard content -->
-      <section>
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div style="margin-top: 5px">
-                    <h2 style="margin: 0px">All Courses</h2>
-                    <h1 style="font-weight: bold">04/06</h1>
-                  </div>
-                  <div class="align-self-center">
-                    <img
-                      alt="example"
-                      class="img-fluid rounded"
-                      src="assets/svg/allcourses.svg"
-                      style="background-color: #edf4ff; height: 65px; width: 65px; object-fit: scale-down"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div style="margin-top: 5px">
-                    <h2 style="margin: 0px">All Projects</h2>
-                    <h1 style="font-weight: bold">40/60</h1>
-                  </div>
-                  <div class="align-self-center">
-                    <img
-                      alt="example"
-                      class="img-fluid rounded"
-                      src="assets/svg/allprojects.svg"
-                      style="background-color: #edf4ff; height: 65px; width: 65px; object-fit: scale-down;
-                      object-position: center;"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div style="margin-top: 5px">
-                    <h2 style="margin: 0px">Test Attended</h2>
-                    <h1 style="font-weight: bold">30/50</h1>
-                  </div>
-                  <div class="align-self-center">
-                    <img
-                      alt="example"
-                      class="img-fluid rounded"
-                      src="assets/svg/testattended.svg"
-                      style="
-                        background-color: #edf4ff; height: 65px; width: 65px; object-fit: scale-down"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div style="margin-top: 5px">
-                    <h2 style="margin: 0px">Test Passed</h2>
-                    <h1 style="font-weight: bold">15/20</h1>
-                  </div>
-                  <div class="align-self-center">
-                    <img
-                      alt="example"
-                      class="img-fluid rounded"
-                      src="assets/svg/testpassed.svg"
-                      style="
-                        background-color: #edf4ff;
-                        height: 65px;
-                        width: 65px;
-                        object-fit: scale-down;
-                        object-position: center;"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-  
       
       <section>
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between" style="margin-top: 10px;">
           <div class="col-xl-3 col-sm-6 col-12 mb-4 ">
             <div class="card" >
               

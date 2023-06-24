@@ -94,6 +94,9 @@
                 />
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" routerLink="/profile" 
+                  >Profile</a
+                > 
                 <a class="dropdown-item" href="#" (click)="OnUserLogout()"
                   >Log out</a
                 >
@@ -148,9 +151,9 @@
             <div class="card" style="margin-top: 10px;" *ngFor="let message of messages | async">
               <div class="card-header">
                 <img
-                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                  [src]="defaultImage | displayImage:message.senderUid:message.groupId | async | getImage"
                   alt=""
-                  style="width: 45px; height: 45px; margin-right: 10px;"
+                  style="width: 45px; height: 45px; margin-right: 10px;object-fit: contain;" 
                   class="rounded-circle float-start"/>
                 <div class="row" style="margin-left: 10px;">
                   <div class="col-auto me-auto">

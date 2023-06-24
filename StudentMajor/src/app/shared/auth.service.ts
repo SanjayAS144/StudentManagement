@@ -11,8 +11,9 @@ export class AuthService {
 
   login(email:string,password: string ){
     this.fireauth.signInWithEmailAndPassword(email,password).then((user)=>{
-        if( user.user?.uid)
+        if( user.user?.uid){
           localStorage.setItem('UserId',user.user?.uid);
+        }
         console.log("IIIIIIIIIIIIIIIIIIIII am Sanjay")
         console.log(user.user?.uid)
         this.router.navigate(['/dashboard']);

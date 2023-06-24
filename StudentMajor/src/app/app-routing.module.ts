@@ -13,6 +13,7 @@ import { EventViewerComponent } from './component/common/event-viewer/event-view
 import { AddEventComponent } from './component/teacher/add-event/add-event.component';
 import { AddresultsComponent } from './component/teacher/addresults/addresults.component';
 import { ViewResultComponent } from './component/student/view-result/view-result.component';
+import { ProfileComponent } from './component/common/profile/profile.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'dashboard',pathMatch:'full'},
@@ -29,7 +30,7 @@ const routes: Routes = [
   {path:'addEvent',component:AddEventComponent},
   {path:'addResults',component: AddresultsComponent},
   {path:'viewResults',component: ViewResultComponent},
-
+  {path:'profile',component: ProfileComponent},
 ];
 
 @NgModule({

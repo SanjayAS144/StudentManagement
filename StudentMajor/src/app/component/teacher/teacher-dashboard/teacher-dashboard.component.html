@@ -94,6 +94,9 @@
               />
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/profile" 
+                  >Profile</a
+                >
               <a class="dropdown-item" href="#" (click)="OnUserLogout()"
                 >Log out</a
               >
@@ -230,7 +233,7 @@
                           <img
                               [src]="student.image.length != 0 ? student.image:defaultImage"
                               alt=""
-                              style="width: 45px; height: 45px"
+                              style="width: 45px; height: 45px;object-fit: contain;"
                               class="rounded-circle"
                               />
                           <div class="ms-3">

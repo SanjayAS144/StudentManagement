@@ -42,6 +42,9 @@ import { AddEventComponent } from './component/teacher/add-event/add-event.compo
 import { HttpClientModule } from '@angular/common/http';
 import { AddresultsComponent } from './component/teacher/addresults/addresults.component';
 import { ViewResultComponent } from './component/student/view-result/view-result.component';
+import { ProfileComponent } from './component/common/profile/profile.component';
+import { ImageDisplayPipe } from './pipes/image-pipe';
+import { GetImagePipe } from './pipes/getImage-pipe';
 
 const ngxLodaerConfiguration: NgxUiLoaderConfig = {
   "bgsColor": "#9ebfff",
@@ -95,9 +98,12 @@ const ngxLodaerConfiguration: NgxUiLoaderConfig = {
     AddAnnouncementComponent,
     EventViewerComponent,
     EventStatusPipe,
+    ImageDisplayPipe,
     AddEventComponent,
     AddresultsComponent,
-    ViewResultComponent
+    ViewResultComponent,
+    ProfileComponent,
+    GetImagePipe
   ],
   imports: [
     BrowserModule,
@@ -121,7 +127,7 @@ const ngxLodaerConfiguration: NgxUiLoaderConfig = {
     MatNativeDateModule,
     HttpClientModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
