@@ -91,12 +91,13 @@ export class AddTeacherComponent {
     this.teacherObj.department = this.department;
     this.teacherObj.studentList = [];
     console.log(this.teacherObj)
-    this.addTeacherService.RegisterTeacher(this.teacherObj).then((user)=>{
+    let password = this.generatePassWord()
+    this.addTeacherService.RegisterTeacher(this.teacherObj,password).then((user)=>{
       if(user.user?.uid != null || user.user?.uid != undefined){
         this.teacherObj.uid = user.user.uid;
         this.addTeacherService.AddTeacherDetails(this.teacherObj).then(()=>{
           this.addTeacherService.logOutSecondaryAndLogInPrimary()?.then(async (user)=>{
-            this.addTeacherService.SendMail(this.teacherObj).subscribe((resp)=>{
+            this.addTeacherService.SendMail(this.teacherObj,password).subscribe((resp)=>{
               this.OnShowAddedStudentSuccess();
               console.log("called OnResetedForm")
               this.OnResetedForm();
@@ -121,5 +122,17 @@ export class AddTeacherComponent {
       alert("unable to the Add the User :" + err)
       this.OnShowAddedStudentWarning();
     })
+  }
+
+  generatePassWord():string{
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
+    var password = "";
+    for (var i = 0; i <= passwordLength; i++) {
+      var randomNumber = Math.floor(Math.random() * chars.length);
+      password += chars.substring(randomNumber, randomNumber +1);
+    }
+    console.log(password)
+    return password
   }
 }

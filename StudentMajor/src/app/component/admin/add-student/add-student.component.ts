@@ -92,12 +92,13 @@ export class AddStudentComponent implements OnInit{
     this.studentObj.department = this.department
     this.studentObj.role = 'Student'
     console.log(this.studentObj)
-    this.addStudentService.RegisterStudent(this.studentObj).then((user)=>{
+    let password = this.generatePassWord()
+    this.addStudentService.RegisterStudent(this.studentObj,password).then((user)=>{
       if(user.user?.uid != null || user.user?.uid != undefined){
         this.studentObj.uid = user.user.uid;
         this.addStudentService.AddStudentDetails(this.studentObj).then(()=>{
           this.addStudentService.logOutSecondaryAndLogInPrimary()?.then((user)=>{
-            this.addStudentService.SendMail(this.studentObj).subscribe((resp)=>{
+            this.addStudentService.SendMail(this.studentObj,password).subscribe((resp)=>{
               console.log(resp)
               this.OnShowAddedStudentSuccess();
               this.OnResetedForm();
@@ -120,5 +121,17 @@ export class AddStudentComponent implements OnInit{
       this.ngxLoader.stop()
       this.OnShowAddedStudentWarning();
     })
+  }
+
+  generatePassWord():string{
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
+    var password = "";
+    for (var i = 0; i <= passwordLength; i++) {
+      var randomNumber = Math.floor(Math.random() * chars.length);
+      password += chars.substring(randomNumber, randomNumber +1);
+    }
+    console.log(password)
+    return password
   }
 }

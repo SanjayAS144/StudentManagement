@@ -29,8 +29,8 @@ export class AddStudentServiceService {
 
   constructor(private fireStore:Firestore,private fireauth:AngularFireAuth,private http: HttpClient) { }
 
-  RegisterStudent(studentData:Student){
-    return this.fireauth.createUserWithEmailAndPassword(studentData.email,"123456789")
+  RegisterStudent(studentData:Student,password:string){
+    return this.fireauth.createUserWithEmailAndPassword(studentData.email,password)
   }
   AddStudentDetails(studentData:Student){
     const ref = doc(this.fireStore, 'Student', studentData.uid);
@@ -49,12 +49,13 @@ export class AddStudentServiceService {
     
     return this.fireauth.signInWithEmailAndPassword(userName,password)
   }
-  SendMail(studentData:Student){
+  SendMail(studentData:Student,password:string){
+    console.log(`email to send ${studentData} ${password}`)
     let emailToSend:EmailModel = {
       fromAddress:"",
       toAddresses:[studentData.email],
       subject:"Login Credentials",
-      emailBody:`<b>Wellcome to SIT your login crediantials to the our portal is \n UserName : ${studentData.email}\nPassword : 123465789<b>`,
+      emailBody:`<b>Wellcome to SIT your login crediantials to the our portal is \n UserName : ${studentData.email}\nPassword : ${password}<b>`,
       attechments:"",
     }
     console.log(emailToSend)
